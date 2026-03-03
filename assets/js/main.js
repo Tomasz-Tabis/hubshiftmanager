@@ -51,7 +51,64 @@
     });
 })();
 
-// Count-up when visible
+// KPI: count-up + progress-bar animation (together)
+(() => {
+    const counters = document.querySelectorAll(".kpi2 .countup");
+    if (!counters.length) return;
+
+    const DURATION = 900;
+
+    const animateNumber = (el, to) => {
+        const start = performance.now();
+        const step = (t) => {
+            const p = Math.min((t - start) / DURATION, 1);
+            el.textContent = String(Math.round(to * p));
+            if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+    };
+
+    const animateBar = (bar, toPercent) => {
+        // start from 0 and animate to target
+        bar.style.width = "0%";
+        bar.style.transition = `width ${DURATION}ms ease`;
+
+        // next frame -> apply target width (transition will run)
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                bar.style.width = `${toPercent}%`;
+            });
+        });
+    };
+
+    const run = (counter) => {
+        const to = parseInt(counter.getAttribute("data-to") || "0", 10);
+        const kpi = counter.closest(".kpi2");
+        if (!kpi) return;
+
+        const bar = kpi.querySelector(".progress-bar");
+        const progressTarget = bar
+            ? parseInt(bar.getAttribute("data-progress") || String(to), 10)
+            : to;
+
+        animateNumber(counter, to);
+        if (bar) animateBar(bar, progressTarget);
+    };
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const counter = e.target;
+            if (counter.dataset.done) return;
+            counter.dataset.done = "1";
+            run(counter);
+        });
+    }, { threshold: 0.35 });
+
+    counters.forEach(c => io.observe(c));
+})();
+
+// Count-up when visible (for .countup)
 (() => {
     const els = document.querySelectorAll(".countup");
     if (!els.length) return;

@@ -139,6 +139,12 @@ body{ color:var(--hs-ink); }
 .kpi2-value{ font-size:1.35rem; font-weight:900; line-height:1; }
 .kpi2-label{ color:rgba(15,23,42,.65); font-size:.92rem; }
 
+/* Smooth progress animation */
+.kpi2 .progress-bar{
+    width:0%;
+    transition: width 900ms ease;
+}
+
 .progress{ height:10px; border-radius:999px; background:rgba(15,23,42,.08); }
 .progress-bar{ border-radius:999px; }
 
@@ -298,6 +304,52 @@ body{ color:var(--hs-ink); }
     font-size:1.1rem;
 }
 
+/* x Teams */
+
+.cta-stats{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap:12px;
+}
+
+@media (min-width: 768px){
+    .cta-stats{ grid-template-columns: 1fr 1fr; }
+}
+
+.cta-stat{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    padding:14px 16px;
+    border-radius:1rem;
+    border:1px solid var(--hs-border);
+    background:#fff;
+}
+
+.cta-stat-icon{
+    width:44px;height:44px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(37,99,235,.12);
+    border:1px solid rgba(37,99,235,.18);
+    color:var(--hs-primary);
+    flex:0 0 auto;
+    font-size:18px;
+}
+
+.cta-stat-value{
+    font-weight:900;
+    font-size:1.5rem;
+    line-height:1.1;
+    letter-spacing:.2px;
+}
+
+.cta-stat-label{
+    color:rgba(15,23,42,.65);
+    font-size:.92rem;
+}
 
 /* Wyrównanie wysokości na większych ekranach */
 @media (min-width: 768px){
