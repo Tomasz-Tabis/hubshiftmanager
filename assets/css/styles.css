@@ -9,13 +9,6 @@ body{ color:var(--hs-ink); }
 
 .bg-soft{ background:var(--hs-soft); }
 
-.brand-dot{
-    display:inline-block;
-    width:10px;height:10px;border-radius:999px;
-    background:var(--hs-primary);
-    vertical-align:middle;
-}
-
 .hero{ position:relative; }
 
 .pill{
@@ -25,6 +18,25 @@ body{ color:var(--hs-ink); }
     border-radius:999px;
     border:1px solid var(--hs-border);
     background:#fff;
+}
+
+.pill-btn{
+    cursor:pointer;
+    border:1px solid var(--hs-border);
+    background:#fff;
+}
+.pill-btn.is-active{
+    border-color: rgba(37,99,235,.35);
+    background: rgba(37,99,235,.10);
+    color: var(--hs-primary);
+}
+
+.hero-shot{
+    transition: opacity .18s ease, transform .18s ease;
+}
+.hero-shot.is-fading{
+    opacity: 0;
+    transform: scale(.995);
 }
 
 .check{
@@ -72,25 +84,63 @@ body{ color:var(--hs-ink); }
 }
 .feature-list li{ margin:.45rem 0; color:rgba(15,23,42,.85); }
 
-.how-list{
-    padding-left:1.2rem;
-}
-.how-list li{ margin:.6rem 0; }
+.fa-whatsapp{ font-size:18px; }
 
-.kpi{
+.how-steps{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+.how-step{
+    display:flex;
+    gap:12px;
+    padding:12px;
     border:1px solid var(--hs-border);
     border-radius:1rem;
-    padding:1rem;
     background:#fff;
 }
-.kpi-value{
-    font-size:1.4rem;
-    font-weight:700;
+.how-badge{
+    width:36px;height:36px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(37,99,235,.12);
+    border:1px solid var(--hs-border);
+    color:var(--hs-primary);
+    font-weight:800;
+    flex:0 0 auto;
 }
-.kpi-label{
-    font-size:.9rem;
-    color:rgba(15,23,42,.65);
+
+.kpi-grid{ display:flex; flex-direction:column; gap:14px; }
+.kpi2{
+    border:1px solid var(--hs-border);
+    border-radius:1rem;
+    padding:12px;
+    background:#fff;
 }
+.kpi2-top{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-bottom:10px;
+}
+.kpi2-icon{
+    width:42px;height:42px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(37,99,235,.12);
+    border:1px solid var(--hs-border);
+    color:var(--hs-primary);
+    flex:0 0 auto;
+}
+.kpi2-value{ font-size:1.35rem; font-weight:900; line-height:1; }
+.kpi2-label{ color:rgba(15,23,42,.65); font-size:.92rem; }
+
+.progress{ height:10px; border-radius:999px; background:rgba(15,23,42,.08); }
+.progress-bar{ border-radius:999px; }
 
 .price-card{
     border:1px solid var(--hs-border);
@@ -180,6 +230,74 @@ body{ color:var(--hs-ink); }
     /* to sprawia, że tekst “wypełnia” kafelek i równa wysokości */
     flex:1 1 auto;
 }
+
+.icon-list{ display:flex; flex-direction:column; gap:12px; }
+.icon-list-item{
+    display:flex;
+    gap:12px;
+    padding:12px;
+    border:1px solid var(--hs-border);
+    border-radius:1rem;
+    background:#fff;
+}
+.icon-list-item i{
+    width:34px;height:34px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(37,99,235,.12);
+    border:1px solid var(--hs-border);
+    color:var(--hs-primary);
+    flex:0 0 auto;
+}
+.icon-list-item span{ color:rgba(15,23,42,.65); }
+
+.cta-section{
+    background: linear-gradient(180deg, #f7f9ff 0%, #ffffff 100%);
+}
+
+.cta-badge{
+    display:inline-block;
+    padding:.35rem .8rem;
+    border-radius:999px;
+    font-size:.85rem;
+    font-weight:600;
+    background:rgba(37,99,235,.12);
+    border:1px solid rgba(37,99,235,.25);
+    color:var(--hs-primary);
+}
+
+.cta-benefits{
+    display:flex;
+    justify-content:center;
+    gap:28px;
+    flex-wrap:wrap;
+}
+
+.cta-benefit{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-weight:600;
+    color:var(--hs-ink);
+}
+
+.cta-benefit i{
+    color:var(--hs-primary);
+}
+
+.cta-card{
+    border:1px solid var(--hs-border);
+}
+
+.cta-button{
+    font-weight:700;
+    letter-spacing:.3px;
+    padding:14px;
+    font-size:1.1rem;
+}
+
 
 /* Wyrównanie wysokości na większych ekranach */
 @media (min-width: 768px){

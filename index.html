@@ -55,9 +55,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="#">
-            <span class="brand-dot me-2" aria-hidden="true"></span>HubShiftManager
-        </a>
+        <a class="navbar-brand fw-bold text-primary" href="#">Hubshift<span class="text-dark">Manager</span></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
             <span class="navbar-toggler-icon"></span>
@@ -118,19 +116,35 @@
                 <div class="col-lg-6">
                     <div class="border-0 rounded-4 overflow-hidden">
                         <div class="card-body p-3 p-md-4">
-                                <img
-                                        src="assets/img/laptop.png"
-                                        alt="Voorbeeldweergave van het planningsoverzicht in HubShiftManager"
-                                        loading="lazy"
-                                        class="w-100 h-100 object-fit-cover"
-                                />
+                            <img
+                                    id="heroShot"
+                                    src="assets/img/laptop.png"
+                                    alt="Voorbeeldweergave van HubShiftManager"
+                                    loading="lazy"
+                                    class="w-100 h-100 object-fit-cover hero-shot"
+                            />
 
-                            <div class="d-flex flex-wrap gap-3 mt-3">
-                                <span class="pill">Roosters</span>
-                                <span class="pill">Beschikbaarheid</span>
-                                <span class="pill">Ruilverzoeken</span>
-                                <span class="pill">Ziek & verlof</span>
-                                <span class="pill">Uren & rapporten</span>
+                            <div class="d-flex flex-wrap gap-2 mt-3" id="heroTabs" role="tablist" aria-label="Product onderdelen">
+                                <button class="pill pill-btn is-active" type="button"
+                                        data-hero-img="assets/img/laptop.png">
+                                    Rooster
+                                </button>
+                                <button class="pill pill-btn" type="button"
+                                        data-hero-img="assets/img/hero-beschikbaarheid.svg">
+                                    Beschikbaarheid
+                                </button>
+                                <button class="pill pill-btn" type="button"
+                                        data-hero-img="assets/img/hero-ruilen.svg">
+                                    Ruilverzoeken
+                                </button>
+                                <button class="pill pill-btn" type="button"
+                                        data-hero-img="assets/img/hero-verlof.svg">
+                                    Ziek & verlof
+                                </button>
+                                <button class="pill pill-btn" type="button"
+                                        data-hero-img="assets/img/hero-rapporten.svg">
+                                    Uren & rapporten
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -145,19 +159,21 @@
             <div class="row g-3 align-items-stretch">
                 <div class="col-md-4">
                     <div class="info-card h-100">
-                        <h3 class="h5 fw-semibold">Minder chaos</h3>
+                        <h3 class="h5 fw-semibold d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-primary"></i> Minder chaos
+                        </h3>
                         <p class="mb-0 text-secondary">Alle verzoeken en wijzigingen op één plek – geen zoekwerk meer.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-card h-100">
-                        <h3 class="h5 fw-semibold">Meer controle</h3>
+                        <h3 class="h5 fw-semibold"><i class="fa-solid fa-gauge-high text-primary"></i> Meer controle</h3>
                         <p class="mb-0 text-secondary">Planner ziet capaciteit per shift en kan direct bijsturen.</p>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="info-card h-100">
-                        <h3 class="h5 fw-semibold">Sneller uitbetalen</h3>
+                        <h3 class="h5 fw-semibold"><i class="fa-solid fa-file-invoice-dollar text-primary"></i> Sneller uitbetalen</h3>
                         <p class="mb-0 text-secondary">Urenrapporten per medewerker of totaalexport voor boekhouding.</p>
                     </div>
                 </div>
@@ -230,6 +246,14 @@
                                         <div class="tile-icon"><i class="fa-solid fa-plane-departure"></i></div>
                                         <div class="tile-title">Verlof aanvragen</div>
                                         <div class="tile-text">Vraag vakantie of losse vrije dagen aan, met status en reactie.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="feature-tile h-100 feature-tile-wide">
+                                        <div class="tile-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                                        <div class="tile-title">WhatsApp meldingen</div>
+                                        <div class="tile-text">Automatische notificaties over shifts, wijzigingen en goedkeuringen.</div>
                                     </div>
                                 </div>
                             </div>
@@ -320,60 +344,102 @@
     <!-- How it works -->
     <section id="how" class="py-5">
         <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <h2 class="fw-bold">Hoe werkt HubShiftManager?</h2>
-                    <p class="text-secondary">
-                        We implementeren het systeem passend bij jouw proces. Daarna werkt alles via duidelijke rollen:
-                        medewerker doet aanvragen, planner keurt goed en plant in, en uren/rapporten blijven altijd up-to-date.
-                    </p>
+            <div class="text-center mb-4">
+                <h2 class="fw-bold">Zo implementeren we HubShiftManager</h2>
+                <p class="text-secondary mb-0">Duidelijke stappen + meetbaar resultaat.</p>
+            </div>
 
-                    <ol class="how-list mt-4">
-                        <li><strong>Setup & configuratie</strong> — rollen, shifts, starttijden, teamstructuur</li>
-                        <li><strong>Plannen per week</strong> — sleep & plaats, capaciteitsdoelen per shift</li>
-                        <li><strong>Verzoeken beheren</strong> — ruilen, ziek, verlof: één dashboard</li>
-                        <li><strong>Uren & rapporten</strong> — invoer per shift → export voor administratie</li>
-                    </ol>
-
-                    <div class="mt-4">
-                        <a class="btn btn-primary" href="#demo">Demo aanvragen</a>
-                        <a class="btn btn-link" href="#pricing">Prijzen bekijken</a>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm rounded-4">
-                        <div class="card-body p-4">
-                            <h3 class="h6 fw-bold">Wat levert het op?</h3>
-                            <div class="row g-3 mt-1">
-                                <div class="col-sm-6">
-                                    <div class="kpi">
-                                        <div class="kpi-value">↓</div>
-                                        <div class="kpi-label">minder miscommunicatie</div>
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4 p-lg-5">
+                            <div class="how-steps">
+                                <div class="how-step">
+                                    <div class="how-badge">1</div>
+                                    <div>
+                                        <div class="fw-bold">Setup & configuratie</div>
+                                        <div class="text-secondary">Rollen, shifts, starttijden, weekstructuur en teamregels.</div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="kpi">
-                                        <div class="kpi-value">↑</div>
-                                        <div class="kpi-label">meer planningsoverzicht</div>
+
+                                <div class="how-step">
+                                    <div class="how-badge">2</div>
+                                    <div>
+                                        <div class="fw-bold">Weekplanning & bezetting</div>
+                                        <div class="text-secondary">Plan per dag/shift, stuur bij op capaciteit en beschikbaarheid.</div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="kpi">
-                                        <div class="kpi-value">⏱</div>
-                                        <div class="kpi-label">sneller week rond</div>
+
+                                <div class="how-step">
+                                    <div class="how-badge">3</div>
+                                    <div>
+                                        <div class="fw-bold">Aanvragen in één overzicht</div>
+                                        <div class="text-secondary">Ruilen, verlof, ziek — accepteren/weigeren met logging.</div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="kpi">
-                                        <div class="kpi-value">🧾</div>
-                                        <div class="kpi-label">rapporten in minuten</div>
+
+                                <div class="how-step">
+                                    <div class="how-badge">4</div>
+                                    <div>
+                                        <div class="fw-bold">Uren & rapporten</div>
+                                        <div class="text-secondary">Van–tot uren per shift → exports voor loonadministratie.</div>
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-secondary small mt-3 mb-0">
-                                (KPI’s kun je later vervangen door echte cijfers uit pilots.)
-                            </p>
+
+                            <div class="mt-4 d-flex gap-2 flex-wrap">
+                                <a class="btn btn-primary" href="#demo">Demo aanvragen</a>
+                                <a class="btn btn-outline-primary" href="#pricing">Prijzen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="card border-0 shadow-sm rounded-4 h-100">
+                        <div class="card-body p-4 p-lg-5">
+                            <h3 class="h6 fw-bold mb-3">Impact</h3>
+
+                            <div class="kpi-grid">
+                                <div class="kpi2">
+                                    <div class="kpi2-top">
+                                        <div class="kpi2-icon"><i class="fa-solid fa-clock"></i></div>
+                                        <div>
+                                            <div class="kpi2-value"><span class="countup" data-to="80">80</span>%</div>
+                                            <div class="kpi2-label">minder planningstijd</div>
+                                        </div>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="minder planningstijd">
+                                        <div class="progress-bar" style="width:80%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="kpi2">
+                                    <div class="kpi2-top">
+                                        <div class="kpi2-icon"><i class="fa-solid fa-comments"></i></div>
+                                        <div>
+                                            <div class="kpi2-value"><span class="countup" data-to="95">95</span>%</div>
+                                            <div class="kpi2-label">minder WhatsApp-gedoe</div>
+                                        </div>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="minder WhatsApp-gedoe">
+                                        <div class="progress-bar" style="width:95%"></div>
+                                    </div>
+                                </div>
+
+                                <div class="kpi2">
+                                    <div class="kpi2-top">
+                                        <div class="kpi2-icon"><i class="fa-solid fa-file-export"></i></div>
+                                        <div>
+                                            <div class="kpi2-value"><span class="countup" data-to="100">100</span>%</div>
+                                            <div class="kpi2-label">sneller rapporten</div>
+                                        </div>
+                                    </div>
+                                    <div class="progress" role="progressbar" aria-label="sneller rapporten">
+                                        <div class="progress-bar" style="width:100%"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -394,14 +460,14 @@
                     <div class="price-card h-100">
                         <h3 class="h5 fw-bold">Starter</h3>
                         <p class="text-secondary">Voor kleinere teams</p>
-                        <div class="price">€ —</div>
+                        <div class="price">€ 1,50</div>
                         <ul class="feature-list mt-3">
                             <li>Weekplanning</li>
                             <li>Beschikbaarheid</li>
                             <li>Ruilverzoeken</li>
                             <li>Basis urenoverzicht</li>
                         </ul>
-                        <a class="btn btn-outline-primary w-100 mt-3" href="#demo">Vraag prijs aan</a>
+                        <a class="btn btn-outline-primary w-100 mt-3" href="#demo">Vraag demo aan</a>
                     </div>
                 </div>
 
@@ -410,9 +476,10 @@
                         <div class="badge-best">Meest gekozen</div>
                         <h3 class="h5 fw-bold">Pro</h3>
                         <p class="text-secondary">Voor hubs & groeiende teams</p>
-                        <div class="price">€ —</div>
+                        <div class="price">€ 2,25</div>
                         <ul class="feature-list mt-3">
                             <li>Alles in Starter</li>
+                            <li>Forecast → minimale bezetting per shift</li>
                             <li>Verlof + ziekmeldingen</li>
                             <li>Urenregistratie (van–tot)</li>
                             <li>Rapport per medewerker (van–tot)</li>
@@ -428,8 +495,8 @@
                         <p class="text-secondary">Maatwerk & integraties</p>
                         <div class="price">Op maat</div>
                         <ul class="feature-list mt-3">
-                            <li>Forecast → minimale bezetting per shift</li>
                             <li>Aangepaste rollen & workflows</li>
+                            <li>Op maat gemaakte faunctionalieiten</li>
                             <li>Custom rapporten</li>
                             <li>Implementatie & training</li>
                         </ul>
@@ -439,47 +506,75 @@
             </div>
 
             <p class="text-secondary small text-center mt-4 mb-0">
-                *Plaats “€” bedragen later. Zo houd je flexibiliteit terwijl je nog product/markt fit test.
+                *Alle bedragen zijn ex BTW en gelden per acieve medewerker!.
             </p>
         </div>
     </section>
 
     <!-- Demo form -->
-    <section id="demo" class="py-5">
+    <section id="demo" class="py-5 cta-section">
         <div class="container">
-            <div class="row g-4 align-items-stretch">
-                <div class="col-lg-6">
-                    <h2 class="fw-bold">Vraag een demo aan</h2>
-                    <p class="text-secondary">
-                        Vertel kort over jouw team (aantal medewerkers, shifts, locatie). We laten je de workflow zien en sturen een voorstel.
-                    </p>
 
-                    <div class="card border-0 shadow-sm rounded-4">
-                        <div class="card-body p-4">
-                            <!-- Front-end only (placeholder). Koppeling kan later via PHP/WordPress/Forms -->
+            <div class="text-center mb-5">
+                <span class="cta-badge">Gratis demo • Binnen 24 uur reactie</span>
+                <h2 class="fw-bold mt-3 display-6">
+                    Klaar om je personeelsplanning te optimaliseren?
+                </h2>
+                <p class="text-secondary mb-0">
+                    Geen WhatsApp-chaos. Geen Excel-bestanden. Eén systeem dat werkt.
+                </p>
+            </div>
+
+            <!-- Benefits -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8">
+                    <div class="cta-benefits">
+                        <div class="cta-benefit">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>Snellere weekplanning</span>
+                        </div>
+                        <div class="cta-benefit">
+                            <i class="fa-solid fa-comments"></i>
+                            <span>Minder communicatie-fouten</span>
+                        </div>
+                        <div class="cta-benefit">
+                            <i class="fa-solid fa-file-export"></i>
+                            <span>Rapporten in minuten</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-lg rounded-4 cta-card">
+                        <div class="card-body p-4 p-lg-5">
+
                             <form id="demoForm" class="row g-3" novalidate>
+
                                 <div class="col-md-6">
-                                    <label class="form-label" for="name">Naam</label>
-                                    <input class="form-control" id="name" name="name" autocomplete="name" required />
+                                    <label class="form-label">Naam</label>
+                                    <input class="form-control form-control-lg" required>
                                     <div class="invalid-feedback">Vul je naam in.</div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label" for="company">Bedrijf</label>
-                                    <input class="form-control" id="company" name="company" autocomplete="organization" required />
+                                    <label class="form-label">Bedrijf</label>
+                                    <input class="form-control form-control-lg" required>
                                     <div class="invalid-feedback">Vul je bedrijfsnaam in.</div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label" for="email">E-mail</label>
-                                    <input class="form-control" id="email" name="email" type="email" autocomplete="email" required />
+                                    <label class="form-label">E-mail</label>
+                                    <input type="email" class="form-control form-control-lg" required>
                                     <div class="invalid-feedback">Vul een geldig e-mailadres in.</div>
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label class="form-label" for="team">Teamgrootte</label>
-                                    <select class="form-select" id="team" name="team" required>
-                                        <option value="" selected>Kies…</option>
+                                    <label class="form-label">Teamgrootte</label>
+                                    <select class="form-select form-select-lg" required>
+                                        <option value="">Kies…</option>
                                         <option>1–10</option>
                                         <option>11–25</option>
                                         <option>26–50</option>
@@ -490,62 +585,33 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <label class="form-label" for="message">Wat wil je optimaliseren?</label>
-                                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Bijv. ruilverzoeken, urenrapporten, forecast per shift…" required></textarea>
+                                    <label class="form-label">Wat wil je optimaliseren?</label>
+                                    <textarea class="form-control form-control-lg" rows="4"
+                                              placeholder="Bijv. ruilverzoeken, urenrapporten, forecast per shift…" required></textarea>
                                     <div class="invalid-feedback">Schrijf kort je doel.</div>
                                 </div>
 
-                                <div class="col-12 d-grid">
-                                    <button class="btn btn-primary btn-lg" type="submit">
-                                        Demo aanvragen
+                                <div class="col-12 d-grid mt-3">
+                                    <button class="btn btn-primary btn-lg cta-button" type="submit">
+                                        Plan mijn gratis demo
                                     </button>
                                 </div>
 
-                                <p class="small text-secondary mb-0">
-                                    Door te verzenden ga je akkoord dat we contact opnemen over HubShiftManager.
+                                <p class="small text-secondary text-center mt-3 mb-0">
+                                    Geen verplichtingen • Geen spam • Snelle reactie
                                 </p>
+
                             </form>
 
-                            <div id="demoSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                            <div id="demoSuccess" class="alert alert-success mt-3 d-none text-center">
                                 Bedankt! We nemen zo snel mogelijk contact met je op.
                             </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm rounded-4 h-100">
-                        <div class="card-body p-4">
-                            <h3 class="h5 fw-bold">Waarom teams voor HubShiftManager kiezen</h3>
-                            <ul class="feature-list mt-3">
-                                <li>Alles gecentraliseerd: geen losse tools meer</li>
-                                <li>Snellere weekplanning en minder last-minute stress</li>
-                                <li>Betere transparantie richting medewerkers</li>
-                                <li>Rapporten voor salaris/boekhouding zonder handwerk</li>
-                                <li>Maatwerk mogelijk per klantproces</li>
-                            </ul>
-
-                            <div class="mt-4 p-3 rounded-4 border bg-light">
-                                <p class="mb-1 fw-semibold">Tip voor jouw hero-afbeelding</p>
-                                <p class="mb-0 text-secondary small">
-                                    Wstaw tu później mockup: laptop + ekran z tabelą tygodnia (dni/shift/pracownicy).
-                                    To najmocniej “sprzedaje” w 3 sekundy.
-                                </p>
-                            </div>
-
-                            <hr class="my-4" />
-
-                            <div class="d-flex flex-wrap gap-2">
-                                <span class="pill">Logistiek</span>
-                                <span class="pill">Sorting hubs</span>
-                                <span class="pill">Warehouses</span>
-                                <span class="pill">Operations</span>
-                                <span class="pill">Shift teams</span>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
