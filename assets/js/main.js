@@ -138,3 +138,38 @@
 
     els.forEach(el => io.observe(el));
 })();
+
+// Lightbox
+
+// Hero image fullscreen lightbox
+(() => {
+
+    const heroImg = document.getElementById("heroShot");
+    const lightbox = document.getElementById("heroLightbox");
+    const lightboxImg = document.getElementById("heroLightboxImg");
+    const closeBtn = document.querySelector(".hero-lightbox-close");
+
+    if(!heroImg) return;
+
+    heroImg.addEventListener("click", () => {
+        lightbox.classList.add("active");
+        lightboxImg.src = heroImg.src;
+    });
+
+    closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+        if(e.target === lightbox){
+            lightbox.classList.remove("active");
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if(e.key === "Escape"){
+            lightbox.classList.remove("active");
+        }
+    });
+
+})();
