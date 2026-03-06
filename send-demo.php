@@ -33,7 +33,7 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
     exit;
 }
 
-$to = "info@hubshiftmanager.nl"; // <-- TU PODAJ SWÓJ MAIL
+$to = "info@hubshiftmanager.com";
 $subject = "Nieuwe demo aanvraag - HubShiftManager";
 
 $body = "
@@ -48,7 +48,7 @@ Bericht:
 $message
 ";
 
-$headers = "From: HubShiftManager <no-reply@hubshiftmanager.nl>\r\n";
+$headers = "From: HubShiftManager <no-reply@hubshiftmanager.com>\r\n";
 $headers .= "Reply-To: $email\r\n";
 $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
