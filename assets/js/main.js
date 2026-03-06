@@ -1,29 +1,49 @@
-(() => {
-    const year = document.getElementById("year");
-    if (year) year.textContent = new Date().getFullYear();
+const form = document.getElementById("demoForm");
+const success = document.getElementById("demoSuccess");
 
-    const form = document.getElementById("demoForm");
-    const success = document.getElementById("demoSuccess");
+form.addEventListener("submit", function(e){
 
-    if (!form) return;
+    e.preventDefault();
 
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
+    if (!form.checkValidity()) {
+        form.classList.add("was-validated");
+        return;
+    }
 
-        // Bootstrap validation
-        if (!form.checkValidity()) {
-            form.classList.add("was-validated");
-            return;
-        }
+    const formData = new FormData(form);
 
-        // Tu podepniesz integrację (np. endpoint / PHP / Zapier / Formspree / WordPress)
-        // Na razie pokazujemy sukces jako placeholder:
-        form.classList.remove("was-validated");
-        form.reset();
-        success?.classList.remove("d-none");
-        setTimeout(() => success?.classList.add("d-none"), 5000);
-    });
-})();
+    fetch("send-demo.php", {
+        method: "POST",
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+
+            if(data.status === "success"){
+
+                form.reset();
+                form.classList.remove("was-validated");
+
+                success.classList.remove("d-none");
+
+                setTimeout(() => {
+                    success.classList.add("d-none");
+                }, 5000);
+
+            } else {
+
+                alert(data.message);
+
+            }
+
+        })
+        .catch(() => {
+
+            alert("Server fout. Probeer later opnieuw.");
+
+        });
+
+});
 
 // Hero image switcher
 (() => {
