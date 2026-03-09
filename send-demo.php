@@ -50,11 +50,11 @@ try {
 
     // SMTP config for OVH MX Plan
     $mail->isSMTP();
-    $mail->Host       = 'smtp.mail.ovh.net';
+    $mail->Host       = 'ssl0.ovh.net';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@hubshiftmanager.nl'; // pełny adres skrzynki OVH
-    $mail->Password   = '3L0$!2=LHQt3';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL/TLS
+    $mail->Username   = 'info@hubshiftmanager.com';
+    $mail->Password   = 'XXXXXX';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL
     $mail->Port       = 465;
 
     $mail->CharSet = 'UTF-8';
