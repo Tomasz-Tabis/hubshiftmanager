@@ -60,9 +60,10 @@ try {
     $mail->CharSet = 'UTF-8';
 
     // Nadawca MUSI być prawdziwą skrzynką z Twojej domeny
-    $mail->setFrom('info@hubshiftmanager.nl', 'HubShiftManager');
-    $mail->addAddress('info@hubshiftmanager.nl', 'HubShiftManager');
+    $mail->setFrom('info@hubshiftmanager.com', 'HubShiftManager');
+    $mail->addAddress('info@hubshiftmanager.com', 'HubShiftManager');
     $mail->addCC('lukasz@softcone.nl', 'Łukasz Tatarczyk');
+    $mail->addCC('tomaszt@hotmail.nl', 'Tomasz Tabis');
 
     // Odpowiedź ma iść do osoby, która wypełniła formularz
     $mail->addReplyTo($email, $name);
