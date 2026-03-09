@@ -62,6 +62,7 @@ try {
     // Nadawca MUSI być prawdziwą skrzynką z Twojej domeny
     $mail->setFrom('info@hubshiftmanager.nl', 'HubShiftManager');
     $mail->addAddress('info@hubshiftmanager.nl', 'HubShiftManager');
+    $mail->addCC('lukasz@softcone.nl', 'Łukasz Tatarczyk');
 
     // Odpowiedź ma iść do osoby, która wypełniła formularz
     $mail->addReplyTo($email, $name);
