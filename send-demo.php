@@ -46,7 +46,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$recaptchaSecret = '6LfLPIYsAAAAAFJBzFBU_l61KmwZTqwiboUQQFfF';
+$recaptchaSecret = '6LfLPIYsAAAAAPrK55ELDDEls389erzia5muw_ky';
 
 if ($recaptchaToken === '') {
     http_response_code(400);
