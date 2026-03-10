@@ -25,6 +25,7 @@ $company = clean_input($_POST['company'] ?? '');
 $email   = clean_input($_POST['email'] ?? '');
 $team    = clean_input($_POST['team'] ?? '');
 $message = clean_input($_POST['message'] ?? '');
+$recaptchaToken = clean_input($_POST['recaptcha_token'] ?? '');
 
 /* Basic validation */
 if ($name === '' || $company === '' || $email === '' || $team === '' || $message === '') {
@@ -41,6 +42,63 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     echo json_encode([
         'status' => 'error',
         'message' => 'Ongeldig e-mailadres.'
+    ]);
+    exit;
+}
+
+$recaptchaSecret = '6LfLPIYsAAAAAFJBzFBU_l61KmwZTqwiboUQQFfF';
+
+if ($recaptchaToken === '') {
+    http_response_code(400);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'reCAPTCHA ontbreekt.'
+    ]);
+    exit;
+}
+
+$postData = http_build_query([
+    'secret'   => $recaptchaSecret,
+    'response' => $recaptchaToken,
+    'remoteip' => $_SERVER['REMOTE_ADDR'] ?? ''
+]);
+
+$context = stream_context_create([
+    'http' => [
+        'method'  => 'POST',
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'content' => $postData,
+        'timeout' => 10
+    ]
+]);
+
+$verifyResponse = file_get_contents(
+    'https://www.google.com/recaptcha/api/siteverify',
+    false,
+    $context
+);
+
+if ($verifyResponse === false) {
+    http_response_code(500);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'reCAPTCHA verificatie mislukt.'
+    ]);
+    exit;
+}
+
+$captchaResult = json_decode($verifyResponse, true);
+
+if (
+    empty($captchaResult['success']) ||
+    !isset($captchaResult['score']) ||
+    $captchaResult['score'] < 0.5 ||
+    ($captchaResult['action'] ?? '') !== 'demo_form'
+) {
+    http_response_code(400);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'reCAPTCHA controle niet geslaagd.'
     ]);
     exit;
 }
