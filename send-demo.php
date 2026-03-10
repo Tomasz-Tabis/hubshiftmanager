@@ -93,7 +93,7 @@ if (
     empty($captchaResult['success']) ||
     !isset($captchaResult['score']) ||
     $captchaResult['score'] < 0.5 ||
-    ($captchaResult['action'] ?? '') !== 'demo_form'
+    ($captchaResult['action'] ?? '') !== 'demoForm'
 ) {
     http_response_code(400);
     echo json_encode([

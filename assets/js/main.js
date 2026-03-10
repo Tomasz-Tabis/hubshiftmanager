@@ -13,7 +13,7 @@ if (form) {
         try {
             grecaptcha.ready(async function () {
                 const token = await grecaptcha.execute("6LfLPIYsAAAAAFJBzFBU_l61KmwZTqwiboUQQFfF", {
-                    action: "demo_form"
+                    action: "demoForm"
                 });
 
                 const recaptchaField = document.getElementById("recaptchaToken");
