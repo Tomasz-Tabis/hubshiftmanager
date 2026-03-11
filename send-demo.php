@@ -2,8 +2,12 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use Dotenv\Dotenv;
 
 require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -46,7 +50,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-$recaptchaSecret = '6LfLPIYsAAAAAPrK55ELDDEls389erzia5muw_ky';
+$recaptchaSecret = $_ENV['RECAPTCHA_SECRET'] ?? '';
 
 if ($recaptchaToken === '') {
     http_response_code(400);
@@ -108,20 +112,35 @@ try {
 
     // SMTP config for OVH MX Plan
     $mail->isSMTP();
-    $mail->Host       = 'ssl0.ovh.net';
+    $mail->Host       = $_ENV['SMTP_HOST'] ?? '';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'info@hubshiftmanager.com';
-    $mail->Password   = 'XXXXXX';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // SSL
-    $mail->Port       = 465;
+    $mail->Username   = $_ENV['SMTP_USERNAME'] ?? '';
+    $mail->Password   = $_ENV['SMTP_PASSWORD'] ?? '';
+    $mail->SMTPSecure = ($_ENV['SMTP_ENCRYPTION'] ?? 'smtps') === 'starttls'
+        ? PHPMailer::ENCRYPTION_STARTTLS
+        : PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port       = (int)($_ENV['SMTP_PORT'] ?? 465);
 
     $mail->CharSet = 'UTF-8';
 
     // Nadawca MUSI być prawdziwą skrzynką z Twojej domeny
-    $mail->setFrom('info@hubshiftmanager.com', 'HubShiftManager');
-    $mail->addAddress('info@hubshiftmanager.com', 'HubShiftManager');
-    $mail->addCC('lukasz@softcone.nl', 'Łukasz Tatarczyk');
-    $mail->addCC('tomaszt@hotmail.nl', 'Tomasz Tabis');
+    $mail->setFrom(
+        $_ENV['MAIL_FROM_ADDRESS'] ?? '',
+        $_ENV['MAIL_FROM_NAME'] ?? 'HubShiftManager'
+    );
+
+    $mail->addAddress(
+        $_ENV['MAIL_TO_ADDRESS'] ?? '',
+        $_ENV['MAIL_TO_NAME'] ?? 'HubShiftManager'
+    );
+
+    if (!empty($_ENV['MAIL_CC_1'])) {
+        $mail->addCC($_ENV['MAIL_CC_1'], $_ENV['MAIL_CC_1_NAME'] ?? '');
+    }
+
+    if (!empty($_ENV['MAIL_CC_2'])) {
+        $mail->addCC($_ENV['MAIL_CC_2'], $_ENV['MAIL_CC_2_NAME'] ?? '');
+    }
 
     // Odpowiedź ma iść do osoby, która wypełniła formularz
     $mail->addReplyTo($email, $name);
